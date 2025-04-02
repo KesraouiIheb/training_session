@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visution</title>
+</head>
+<body>
+    <h1> ML Visual Prediction Application</h1>
+    <form method="POST">
+        <label for="input_value">Enter an input value:</label>
+        <input type="text" id="input_value" name="input_value" required
+               value="{{ input_value if input_value is not none else '' }}">
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    {% if plot_url %}
+        <h2>Prediction Visualization</h2>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Prediction Plot">
+    {% endif %}
+</body>
+</html>
